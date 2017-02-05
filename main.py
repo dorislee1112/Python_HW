@@ -43,12 +43,11 @@ def main():
         out = graph.get_tensor_by_name("import/%s/output:0" % model_name)
         
         shape = image.get_shape().as_list()
-        
 
         '''
         2. set the `path` to  your input
         '''
-        #print (shape[0])
+        
         with Video(input_file) as v:
             frames = v.read_frames(image_h=shape[1], image_w=shape[2])
 
@@ -61,7 +60,7 @@ def main():
         3. Write a list comprehension to iterate through all frames,
            and make it be processed by Tensorflow.
         '''
-        #Sprint (shape2)
+     
         #processed = []
         processed = [
             session.run(out, feed_dict={image: [frame]}) for frame in frames
@@ -74,11 +73,6 @@ def main():
             #np.expand_dims(frame, axis=0)
             print (str(i))
             mix_img=session.run(out, feed_dict={image: frame})
-            #s='result'+str(i)+'.jpeg'
-            #print(s)
-            #im = Image.fromarray(out)
-            #im.save(s)
-            #cv2.imwrite(s, out)
             processed.append(mix_img)
             i=i+1
         '''

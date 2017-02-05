@@ -34,18 +34,11 @@ class Video:
             if ret==True:
                 #print (getframe.shape)
                 resize_frame=resize(getframe,image_h,image_w)
-                #shape = resize_frame.get_shape().as_list()
-                #print(shape)
-                #print (resize_frame.shape[2])
-                #resize_frame = array(resize_frame).reshape(1, image_w, image_h, 3)
-                #np.expand_dims(img, axis=0)
                 frames.append(resize_frame)
-                #frames.append(getframe)
             else:
                 break
             
-        self.frames=frames
-        #self.frames = frames  # 5-3 let object have the result
+        self.frames=frames  # 5-3 let object have the result
         return self.frames  # return your results
 
     def __exit__(self, exc_type, exc_val, exc_tb):

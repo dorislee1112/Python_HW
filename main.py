@@ -16,7 +16,7 @@ from styler.utils import save_video
 
 model_file = 'data/vg-30.pb'
 model_name = 'vg-30'
-input_file = 'input/nadal.mp4'
+input_file = 'input/jaguar.mp4'
 
 logging.basicConfig(
     stream=sys.stdout,
@@ -60,23 +60,10 @@ def main():
         3. Write a list comprehension to iterate through all frames,
            and make it be processed by Tensorflow.
         '''
-     
-        #processed = []
+        
         processed = [
             session.run(out, feed_dict={image: [frame]}) for frame in frames
         ]
-
-        '''
-        i=0
-        for frame in frames:
-            #frame = array(frame).reshape(1, frame.shape[0], frame.shape[1], frame.shape[2])
-            #np.expand_dims(frame, axis=0)
-            print (str(i))
-            mix_img=session.run(out, feed_dict={image: frame})
-            processed.append(mix_img)
-            i=i+1
-        '''
-        #]
 
         #print ('end')
 
